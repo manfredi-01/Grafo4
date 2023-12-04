@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grafo"
+    app:startDestination="@id/portadaFragment">
+
+    <fragment
+        android:id="@+id/portadaFragment"
+        android:name="com.example.grafo.PortadaFragment"
+        android:label="Portada"
+        tools:layout="@layout/fragment_portada">
+        <action
+            android:id="@+id/action_portadaFragment_to_juegoFragment"
+            app:destination="@id/juegoFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/ganaFragment"
+        android:name="com.example.grafo.GanaFragment"
+        android:label="Victoria"
+        tools:layout="@layout/fragment_gana">
+        <argument
+            android:name="nivel"
+            app:argType="integer" />
+        <argument
+            android:name="puntos"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/juegoFragment"
+        android:name="com.example.grafo.JuegoFragment"
+        android:label="Juego"
+        tools:layout="@layout/fragment_juego">
+        <action
+            android:id="@+id/action_juegoFragment_to_ganaFragment"
+            app:destination="@id/ganaFragment"
+            app:popUpTo="@id/juegoFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_juegoFragment_to_pierdeFragment"
+            app:destination="@id/pierdeFragment"
+            app:popUpTo="@id/portadaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pierdeFragment"
+        android:name="com.example.grafo.PierdeFragment"
+        android:label="Derrota"
+        tools:layout="@layout/fragment_pierde">
+        <argument
+            android:name="mensaje"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/ayudaFragment"
+        android:name="com.example.grafo.AyudaFragment"
+        android:label="fragment_ayuda"
+        tools:layout="@layout/fragment_ayuda" />
+    <fragment
+        android:id="@+id/creditosFragment"
+        android:name="com.example.grafo.CreditosFragment"
+        android:label="fragment_creditos"
+        tools:layout="@layout/fragment_creditos" />
+    <activity
+        android:id="@+id/otraActivity"
+        android:name="com.example.grafo.OtraActivity"
+        android:label="activity_otra"
+        tools:layout="@layout/activity_otra" />
+</navigation>
